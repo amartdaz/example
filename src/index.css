@@ -1,13 +1,49 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* COLORS */
+  --deep-dark-blue: #004a4d;
+  --dark-blue: #162a64;
+  --blue: #b2b6ff;
+  --blue-light: #e6f4f1;
+  --deep-dark-green: #374b43;
+  --dark-green: #003113;
+  --green: #009e76;
+  --green-light: #59d6aa;
+  --dark: #454555;
+  --light: #f7f4f3;
+  --violet: #aaaabc;
+  --violet-brown: #bfa5a5;
+  --success: #68ce42;
+  --success-light: #b4e7a1;
+  --warning: #ff9952;
+  --warning-light: #ffcca9;
+  --error: #d23e3e;
+  --error-light: #ffafaf;
+  --white: #fff;
+  --border-radius: 10px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root:has(.noScroll) {
+  /* Prevent scrolling when modal is active */
+  overflow: hidden;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+select {
+  padding: 7px;
+  height: 34px;
+  border: 1px solid var(--dark-blue);
+  border-radius: var(--border-radius);
+  accent-color: var(--blue);
+}
+
+button {
+  cursor: pointer;
 }

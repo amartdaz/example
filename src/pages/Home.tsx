@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import Head from "../components/head/Head";
+import useLenguageContext from "../context/lenguageContext";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const {lenguage} = useLenguageContext();
 
   useEffect(() => {
     const userToken = localStorage.getItem("user");
@@ -18,9 +20,9 @@ const Home: React.FC = () => {
     <div>
       <Head title="Home" />
       <Header />
-      <p>This is the home page.</p>
+      <p>{lenguage ? 'Esta es la página de inicio' : 'This is the home page.'}</p>
       <Link to="/login">
-        <button>Go to Login</button>
+        <button>{lenguage ? 'Iniciar sesión' : 'Go to Login'}</button>
       </Link>
     </div>
   );

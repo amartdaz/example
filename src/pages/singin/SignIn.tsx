@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputPassword from "../../components/inputs/InputPassword";
-import './login.css';
+import './signin.css';
 
-const Login: React.FC = () => {
+const SignIn: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -26,7 +26,31 @@ const Login: React.FC = () => {
         className='loginForm'
         // action={() => {onSubmit();}}
       >
-        <h1>Acceso usuario</h1>
+        <h1>Usuario nuevo</h1>
+        <div className='input_group'>
+          <label htmlFor="name">Nombre:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            autoComplete="off"
+            placeholder="Nombre"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className='input_group'>
+          <label htmlFor="surname">Apellidos:</label>
+          <input
+            type="text"
+            name="surname"
+            id="surname"
+            autoComplete="off"
+            placeholder="Apellidos"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
         <div className='input_group'>
           <label htmlFor="username">Usuario:</label>
           <input
@@ -46,13 +70,10 @@ const Login: React.FC = () => {
         <button className='submit_button' type='submit'>
         Entrar
         </button>
-        <Link to="/signin">
-        <a href='/signin'>Registrarse</a>
-      </Link>
         {/* {error && <p className='errorMessage'>{error}</p>} */}
       </form>
     </div>
   );
 };
 
-export default Login;
+export default SignIn;

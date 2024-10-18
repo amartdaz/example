@@ -1,4 +1,7 @@
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Dispatch, SetStateAction, useState } from "react";
+import './input.css';
 
 type InputPasswordProps = {
   password: string | undefined;
@@ -12,10 +15,9 @@ export default function InputPassword({
   const [passwordShown, setPasswordShown] = useState(false);
 
   return (
-    <div className={styles.input_password}>
+    <div className='input_password'>
       <input
         type={passwordShown ? "text" : "password"}
-        required
         name="password"
         id="password"
         autoComplete="current-password"
@@ -23,13 +25,7 @@ export default function InputPassword({
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button
-        title="Eye"
-        className="InputIcon"
-        onClick={() => setPasswordShown((prev) => !prev)}
-      >
-        {passwordShown ? getIcon("eye") : getIcon("eye-closed")}
-      </Button>
+      <button onClick={() => setPasswordShown((prev) => !prev)} type='button'>{passwordShown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />}</button>
     </div>
   );
 }

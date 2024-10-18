@@ -1,0 +1,21 @@
+.input_password {
+    width: 100%;
+    position: relative;
+}
+
+.input_password > input {
+    width: 100%;
+}
+
+.input_password button {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    padding-right: 7px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}

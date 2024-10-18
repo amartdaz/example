@@ -1,0 +1,88 @@
+.loginContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.loginForm {
+    min-width: 240px;
+    width: 60%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+}
+  
+@media screen and (orientation: portrait) {
+    .loginForm {
+      width: 90%;
+    }
+}
+  
+.loginForm > h1 {
+    text-align: center;
+}
+  
+.loginForm > div {
+    padding: 10px 0;
+}
+  
+.loginForm > div.input_group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+  
+.loginForm .submit {
+    line-height: 2em;
+    padding-left: 8px;
+}
+  
+.errorMessage {
+    color: #ff6347;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+  
+.submit {
+    margin-top: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--orange-light);
+    font-size: 18px;
+}
+  
+.submit:hover {
+    cursor: pointer;
+}
+
+.submit_button {
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: var(--blue);
+    border: none;
+}
+
+.submit_button:hover {
+    color: var(--dark);
+}
+
+a {
+    margin: auto;
+    margin-top: 5px;
+    color: var(--blue-light);
+}
+
+a:hover {
+    color: var(--blue);
+}
+
