@@ -1,0 +1,44 @@
+:root {
+  /* COLORS */
+  --dark: #11101d;
+  --dark-soft: #1d1b31;
+  --light: #f7f4f3;
+  --grey: #747070;
+  --grey-light: #d5d5d5;
+  --orange: #d49a52;
+  --orange-light: #fec887;
+  --blue: #2f4858;
+  --blue-light: #577283;
+  --green: #438579;
+  --green-light: #acd0c9;
+  --success: #68ce42;
+  --success-light: #b4e7a1;
+  --warning: #ff9952;
+  --warning-light: #ffcca9;
+  --error: #d23e3e;
+  --error-light: #ffafaf;
+  /* BORDERS */
+  --border-xl: 16px;
+  --border: 6px;
+  /* SHADOW */
+  --shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  /* TRANSITION */
+  --transition: all 0.3s ease;
+  /* SIDEBAR */
+  --sidebar-width: 280px;
+  --sidebar-mobile-width: 360px;
+  --background-color: #e4e9f7;
+}
+
+:root:has(.noScroll) {
+  /* Prevent scrolling when modal is active */
+  overflow: hidden;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
