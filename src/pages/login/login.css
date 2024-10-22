@@ -45,7 +45,7 @@
 }
   
 .errorMessage {
-    color: #ff6347;
+    color: var(--error);
     margin-top: 12px;
     margin-bottom: 6px;
 }
