@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputPassword from "../../components/inputs/InputPassword";
-import "./login.css";
+import "./signin.css";
 import { post } from "../../api/fetcher";
-import { LoginResponse } from "../../types/loginResponse";
+import User from "../../types/user";
 import useLenguageContext from "../../context/lenguageContext";
 
-const Login: React.FC = () => {
+const SignIn: React.FC = () => {
   const [formData, setFormData] = useState<{
+    name: string;
+    surname: string;
     username: string;
     password: string;
-  }>({ username: "", password: "" });
-  const [error, setError] = useState("");
+  }>({ name: "", surname: "", username: "", password: "" });
+  const [error, setError] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -19,17 +21,18 @@ const Login: React.FC = () => {
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    post<LoginResponse>("auth/login", {
+    post<User>("users", {
+      name: formData.name,
+      surname: formData.surname,
       username: formData.username,
       password: formData.password,
     }).then((result) => {
       console.log(result);
-      if (!result.error && result.data) {
-        localStorage.setItem("userToken", result.data.token);
-        navigate("/");
-      } else {
+      if (result.error) {
         setError(result.errorMessage);
+        return;
       }
+      navigate("/login");
     });
   }
 
@@ -51,7 +54,39 @@ const Login: React.FC = () => {
             onSubmit(event);
           }}
         >
-          <h1>{lenguage ? "Acceso usuario" : "User access"}</h1>
+          <h1>{lenguage ? "Usuario nuevo" : "New user"}</h1>
+          <div className="input_group">
+            <label htmlFor="name">{lenguage ? "Nombre:" : "Name:"}</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              autoComplete="off"
+              placeholder={lenguage ? "Nombre:" : "Name:"}
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+            />
+          </div>
+          <div className="input_group">
+            <label htmlFor="surname">
+              {lenguage ? "Apellidos:" : "Surname:"}
+            </label>
+            <input
+              type="text"
+              name="surname"
+              id="surname"
+              required
+              autoComplete="off"
+              placeholder={lenguage ? "Apellidos:" : "Surname:"}
+              value={formData.surname}
+              onChange={(e) =>
+                setFormData({ ...formData, surname: e.target.value })
+              }
+            />
+          </div>
           <div className="input_group">
             <label htmlFor="username">
               {lenguage ? "Usuario:" : "Username:"}
@@ -62,7 +97,7 @@ const Login: React.FC = () => {
               id="username"
               required
               autoComplete="off"
-              placeholder={lenguage ? "Usuario" : "Username"}
+              placeholder={lenguage ? "Usuario:" : "Username:"}
               value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
@@ -81,11 +116,8 @@ const Login: React.FC = () => {
             />
           </div>
           <button className="submit_button" type="submit">
-            {lenguage ? "Entrar" : "Login"}
+            {lenguage ? "Registrarse" : "Signin"}
           </button>
-          <Link to="/signin">
-            <a href="/signin">{lenguage ? "Registrarse" : "Signin"}</a>
-          </Link>
           {error && <p className="errorMessage">{error}</p>}
         </form>
       </div>
@@ -93,4 +125,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default SignIn;

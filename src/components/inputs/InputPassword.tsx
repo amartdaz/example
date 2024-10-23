@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import useLenguageContext from "../../context/lenguageContext";
 import "./input.css";
 
 type InputPasswordProps = {
@@ -14,6 +15,8 @@ export default function InputPassword({
 }: InputPasswordProps) {
   const [passwordShown, setPasswordShown] = useState(false);
 
+  const { lenguage } = useLenguageContext();
+
   return (
     <div className="input_password">
       <input
@@ -22,7 +25,7 @@ export default function InputPassword({
         id="password"
         required
         autoComplete="current-password"
-        placeholder="Contraseña"
+        placeholder={lenguage ? "Contraseña:" : "Password:"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />

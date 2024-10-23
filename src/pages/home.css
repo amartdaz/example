@@ -1,0 +1,40 @@
+.welcome {
+    text-align: center;
+    padding: 20px;
+}
+
+.buttonsDiv {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttonsDiv button {
+    padding: 10px 15px;
+    color: var(--green-light);
+    background-color: var(--deep-dark-blue);
+    border: 1px solid;
+    border-radius: 100px;
+}
+
+.buttonsDiv button:hover {
+    color: var(--green);
+}
+
+.information, .information > p {
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+.errorComponent {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--error);
+    border-radius: 10px;
+    padding: 7px
+}
+
+.errorComponent p {
+    color: var(--white);
+}
